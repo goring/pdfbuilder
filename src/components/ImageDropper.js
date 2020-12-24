@@ -3,7 +3,20 @@ import Dropzone from 'react-dropzone'
 
 export default function ImageDropper({setImage}) {
     const [isOver, setIsOver] = useState(false)
+    
 
+    const imageHandler = (image) => {
+        let imgB;
+        console.log(image)
+
+        const fr = new FileReader()
+        image.forEach((file)=>{
+            fr.readAsDataURL(file)
+            fr.onloadend =  (res)=> {
+                setImage(res.currentTarget.result)
+            }
+        })
+    }
     return (
         <div >
             <div >
@@ -12,7 +25,7 @@ export default function ImageDropper({setImage}) {
 
                 </div>
 
-                <Dropzone onDrop={acceptedFiles => setImage(acceptedFiles)}>
+                <Dropzone onDrop={acceptedFiles => imageHandler(acceptedFiles)}>
                     {({ getRootProps, getInputProps }) => (
                         <section className="h-3/4 w-full ">
                             <div className="flex flex-col h-full w-full justify-center items-center" {...getRootProps()}>

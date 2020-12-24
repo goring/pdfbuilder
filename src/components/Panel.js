@@ -6,9 +6,10 @@ import ImageDropper from './ImageDropper';
 import FontSelection from './FontSelection';
 
 
-function Panel() {
+function Panel({preview}) {
     const stages = 2
     const [currentStage, setCurrentStage] = useState(0)
+    const [dispatching, isDispatching] = useState(false)
     const [details, setDetails] = useState({
         firstName: "",
         lastName: "",
@@ -22,6 +23,9 @@ function Panel() {
         image:""
 
     });
+    
+
+    
 
     const stageMap = { 
         0: () => (<Details />), 
@@ -34,6 +38,10 @@ function Panel() {
 
     }
 
+    useEffect(()=> {
+        preview(details)
+    })
+
     const onSubmitHandler = (e) => {
         e.preventDefault()
         console.log("submitted!")
@@ -43,12 +51,15 @@ function Panel() {
         console.log(details)
     }
 
+    const handleSubmit = () => {
+        return details
+    }
+
     const onChangeHandler = (e) => {
         setDetails((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
-        console.log(details)
     }
     return (
         <div className="flex h-full w-full">

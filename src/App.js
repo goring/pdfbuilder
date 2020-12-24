@@ -4,6 +4,7 @@ import PreviewWindow from './components/PreviewWindow'
 
 function App() {
     const [details, setDetails] = useState()
+    
 
     return (
         <div className="h-screen w-screen bg-darkTheme">
@@ -13,7 +14,7 @@ function App() {
 
                     <div className="flex flex-col justify-between py-16 h-screen content-center items-center w-5/12 ">
 
-                        <Panel setDetails={(props) => setDetails(props)} />
+                        <Panel preview={(details) => setDetails(details)} />
                     </div>
                 </div>
             </div>
