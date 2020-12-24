@@ -17,11 +17,18 @@ function Panel() {
         city: "",
         postalCode: "",
         country: "",
-        telephone: ""
+        telephone: "",
+        font:"",
+        image:""
 
     });
 
-    const stageMap = { 0: () => (<Details />), 1: () => (<ImageDropper />), 2: () => (<FontSelection />) }
+    const stageMap = { 
+        0: () => (<Details />), 
+        1: () => (<ImageDropper 
+                            setImage={(image)=>setDetails(prevState=>({...prevState, image}))}/>), 
+        2: () => (<FontSelection 
+                            setFont={(font)=>setDetails(prevState=>({...prevState, font}))}/>) }
 
     const stageHandler = () => {
 
