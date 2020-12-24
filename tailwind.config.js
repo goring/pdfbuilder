@@ -34,8 +34,8 @@ module.exports = {
       },
       black: { DEFAULT: '#000' },
 
-      movieBlue: '#1661CA',
-      movieCyan: '#148BB3',
+      customBlue: '#1661CA',
+      customCyan: '#148BB3',
     },
 
     extend: {},

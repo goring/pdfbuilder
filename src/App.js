@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DetailsForm from './components/DetailsForm'
+import Panel from './components/Panel'
 import PreviewWindow from './components/PreviewWindow'
 
 function App() {
@@ -8,12 +8,12 @@ function App() {
     return (
         <div className="h-screen w-screen bg-darkTheme">
             <div className="flex flex-row justify-center w-screen">
-                <div className="flex flex-row justify-between w-3/4">
+                <div className="flex flex-row justify-center w-3/4">
                     <PreviewWindow details={details} />
 
-                    <div className="flex flex-col justify-between py-16 h-screen content-center items-center ">
+                    <div className="flex flex-col justify-between py-16 h-screen content-center items-center w-5/12 ">
 
-                        <DetailsForm setDetails={(props) => setDetails(props)} />
+                        <Panel setDetails={(props) => setDetails(props)} />
                     </div>
                 </div>
             </div>
