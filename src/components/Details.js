@@ -6,7 +6,7 @@ export default function Details() {
         const onBlurProp = (e) => { e.target.placeholder = placeholder }
         const onFocusProp = (e) => { e.target.placeholder = '' }
         return ({
-            className: "border-solid border-b-2 border-customGrey-900 text-white w-full min-w-full p-3 text-xl rounded bg-darkTheme-500",
+            className: "border-solid border-b-2 border-customGrey-900 text-white w-full min-w-full p-2 text-xl rounded bg-darkTheme-400",
             onBlur: onBlurProp,
             onFocus: onFocusProp,
             placeholder,
@@ -29,8 +29,7 @@ export default function Details() {
     }
 
     return (
-        <div className="w-full flex justify-center h-full items-center">
-            <div className="flex flex-col justify-between h-5/6 w-full">
+            <div className="flex flex-col justify-between h-full py-8 w-full">
                 <div className="flex flex-row justify-between">
                     {inputBuilder('First Name', { placeholder: 'john', id: 'firstName', type: 'text' })}
                     {inputBuilder('Last Name', { placeholder: 'doe', id: 'lastName', type: 'text' })}
@@ -46,6 +45,5 @@ export default function Details() {
                     {inputBuilder('Country', { placeholder: 'United Kingdom', id: 'country', type: 'text' })}
                 </div>
             </div>
-        </div>
     )
 }

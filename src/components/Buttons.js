@@ -3,7 +3,6 @@ import React from 'react'
 export default function Buttons({ save, switchStage, final }) {
 
     return (
-        <div className="w-full">
             <div className="flex flex-row justify-around border-gray-900 border-t-2 border-solid pt-2">
                 <button onClick={() => switchStage(false)} className="bg-darkTheme-600 w-1/2 rounded-lg p-3  mr-2">
                     <span className="text-customGrey-100 text-lg font-semibold">Back</span>
@@ -17,7 +16,6 @@ export default function Buttons({ save, switchStage, final }) {
                         <span className="text-white text-lg font-semibold">Next</span>
                     </button>
                 }
-            </div>
         </div>
     )
 }

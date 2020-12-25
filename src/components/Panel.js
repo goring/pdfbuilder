@@ -19,9 +19,10 @@ function Panel({preview}) {
         postalCode: "",
         country: "",
         telephone: "",
-        font:"",
+        fontFamily:"font-sans",
+        fontSize:"text-base",
+        fontWeight:"font-normal",
         image:""
-
     });
     
 
@@ -32,7 +33,10 @@ function Panel({preview}) {
         1: () => (<ImageDropper 
                             setImage={(image)=>setDetails(prevState=>({...prevState, image}))}/>), 
         2: () => (<FontSelection 
-                            setFont={(font)=>setDetails(prevState=>({...prevState, font}))}/>) }
+                            setFontFamily={(fontFamily)=>setDetails(prevState=>({...prevState, fontFamily}))}
+                            setFontWeight={(fontWeight)=> setDetails(prevState=>({...prevState, fontWeight}))} 
+                            setFontSize={(fontSize)=> setDetails(prevState=>({...prevState, fontSize}))} 
+                            />) }
 
     const stageHandler = () => {
 
@@ -62,17 +66,21 @@ function Panel({preview}) {
         }))
     }
     return (
-        <div className="flex h-full w-full">
+        <div className="flex h-full w-full ">
             <form
-                className="flex flex-col w-full justify-between"
+                className="flex flex-col w-full justify-between h-full"
                 onSubmit={(e) => onSubmitHandler(e)}
                 onChange={(e) => onChangeHandler(e)}>
                 <Stage currentStage={currentStage} />
-                {stageMap[currentStage]()}
+                <div className="sm:overflow-scroll sm:h-screen sm:pt-auto">
+                    {stageMap[currentStage]()}
+                </div>
+                <div>
                 <Buttons
                     save={(e) => saveHandler(e)}
                     switchStage={(x) => { console.log(currentStage); x ? setCurrentStage(currentStage + 1 % stages) : setCurrentStage((currentStage - 1 >= 0) ? (currentStage - 1) : currentStage) }}
                     final={currentStage === stages ? true : false} />
+                </div>
             </form>
         </div>
 
