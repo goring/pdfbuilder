@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Panel from './components/Panel'
+import PDFMaker from './components/PDFMaker';
 import PreviewWindow from './components/PreviewWindow'
 
 function App() {
     const [details, setDetails] = useState()
+    const [saving, isSaving] = useState(false)
     
 
     return (
@@ -14,7 +16,9 @@ function App() {
 
                     <div className="flex flex-col justify-between md:py-16 sm:py-0 h-screen content-center items-center w-5/12 ">
 
-                        <Panel preview={(details) => setDetails(details)} />
+                        <Panel saveToPDF = {(save) => isSaving(save) } preview={(details) => setDetails(details)} />
+
+                        <PDFMaker saving={saving} details={details} isSaving={(save) => isSaving(save)}/>
                     </div>
                 </div>
             </div>

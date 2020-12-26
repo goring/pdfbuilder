@@ -6,11 +6,12 @@ import ImageDropper from './ImageDropper';
 import FontSelection from './FontSelection';
 
 
-function Panel({preview}) {
+function Panel({preview, saveToPDF}) {
     const stages = 2
     const [currentStage, setCurrentStage] = useState(0)
     const [dispatching, isDispatching] = useState(false)
     const [details, setDetails] = useState({
+        documentTitle:"",
         firstName: "",
         lastName: "",
         addressLine1: "",
@@ -19,9 +20,9 @@ function Panel({preview}) {
         postalCode: "",
         country: "",
         telephone: "",
-        fontFamily:"font-sans",
-        fontSize:"text-base",
-        fontWeight:"font-normal",
+        fontFamily:{sans:"font-sans"},
+        fontSize:{normal:"text-base"},
+        fontWeight:{normal:"font-normal"},
         image:""
     });
     
@@ -48,11 +49,11 @@ function Panel({preview}) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        console.log("submitted!")
     }
 
     const saveHandler = (e) => {
-        console.log(details)
+        saveToPDF(true)
+        console.log("final state")
     }
 
     const handleSubmit = () => {

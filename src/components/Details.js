@@ -30,6 +30,9 @@ export default function Details() {
 
     return (
             <div className="flex flex-col justify-between h-full py-8 w-full">
+                <div>
+                    {inputBuilder('Document Title' , {placeholder:"Document Title", id:"documentTitle", id:"documentTitle"})}
+                </div>
                 <div className="flex flex-row justify-between">
                     {inputBuilder('First Name', { placeholder: 'john', id: 'firstName', type: 'text' })}
                     {inputBuilder('Last Name', { placeholder: 'doe', id: 'lastName', type: 'text' })}
