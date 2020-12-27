@@ -51,6 +51,7 @@ function Panel({ preview, saveToPDF }) {
     }
 
     const saveHandler = (e) => {
+        console.log("called")
         saveToPDF(true)
     }
 

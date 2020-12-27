@@ -12,6 +12,8 @@ function App() {
     useEffect(()=>{
         if(saving){
             setMounted(true)
+        }else{
+            setMounted(false)
         }
     }, [saving])
 
@@ -28,7 +30,7 @@ function App() {
                         <Panel saveToPDF = {(save) => isSaving(save) } preview={(details) => setDetails(details)} />
                         
                         {mounted ? 
-                        <PDFMaker saving={saving} details={details} demount = {(val)=>setMounted(val)} isSaving={(save) => isSaving(save)}/>
+                        <PDFMaker saving={saving} details={details} demount = {(val)=>setMounted(!val)} isSaving={(save) => isSaving(save)}/>
                         : ""}
                         
                     </div>

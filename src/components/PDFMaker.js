@@ -11,7 +11,7 @@ import PlayfairDisplayBold from '../assets/PlayfairDisplay-bold';
 import PoppinsBold from '../assets/Poppins-bold';
 import RobotoMonoBold from '../assets/RobotoMono-bold';
 
-export default function PDFMaker({ details, saving, isSaving }) {
+export default function PDFMaker({ details, saving, isSaving, demount}) {
 
     const [installedFonts, hasInstalledFonts] = useState(false)
     
@@ -23,27 +23,28 @@ export default function PDFMaker({ details, saving, isSaving }) {
         huge: 32
     }
 
-    const [valid, isValid] = useState(false)
-    const doc = new jsPDF("p", "mm", "a4", { filters: ["ASCIIHexEncode"] });
-    const width = doc.internal.pageSize.getWidth();
-    const height = doc.internal.pageSize.getHeight();
+    let doc;
+    
     const imageWidth = 48;
     const imageHeight = 48;
     const margin = 16
 
-    const validateData = () => {
-        for (let key in details) {
-            if (!details[key]) {
-                console.log("INVALID AT: ", key)
-                return false
-            }
-        }
-        // passed checks
-        isValid(true)
-    }
+    // const validateData = () => {
+    //     for (let key in details) {
+    //         if (!details[key]) {
+    //             console.log("INVALID AT: ", key)
+    //             return false
+    //         }
+    //     }
+    //     // passed checks
+    //     isValid(true)
+    // }
 
-    useEffect(() => {
-        console.log(details)
+    const logic = () => {
+        console.log("prepping")
+        doc = new jsPDF("p", "mm", "a4", { filters: ["ASCIIHexEncode"] });
+        const width = doc.internal.pageSize.getWidth();
+        const height = doc.internal.pageSize.getHeight();
         let currentMargin = 32
         // declarations 
 
@@ -142,43 +143,41 @@ export default function PDFMaker({ details, saving, isSaving }) {
             doc.rect(margin + 64 + 32, currentMargin - 24, width - 128, 12)
         }
 
-
         // begin processing to pdf
-        if (saving) {
-            // validateData() // this will force the user to use all inputs
-            isValid(true); 
-            isSaving(false);
-           
-        }
-        if (valid) {
-            let fontName = getFamilyMapping(details.fontFamily)
-            if (details.image)
-                doc.addImage(details.image, width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight);
-            else 
-                doc.addImage(placeholder,width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight)
-            doc.setFont(fontName, getWeightMapping(details.fontWeight))
-            // doc title
-            doc.setFontSize(getSizeMapping(details.fontSize)+8);
-            addRow(details.documentTitle, "center", true, 16)
-            currentMargin+=8
-            // body content
-            doc.setFontSize(getSizeMapping(details.fontSize));
-            addElement("First name", details.firstName, 128, 12);
-            addElement("Last name", details.lastName, 128, 12);
-            addElement("Address line 1", details.addressLine1, width - (margin * 2), 12);
-            addElement("Address line 2", details.addressLine1, width - (margin * 2), 12);
+        let fontName = getFamilyMapping(details.fontFamily)
+        if (details.image)
+            doc.addImage(details.image, width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight);
+        else 
+            doc.addImage(placeholder,width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight)
+        doc.setFont(fontName, getWeightMapping(details.fontWeight))
+        // doc title
+        doc.setFontSize(getSizeMapping(details.fontSize)+8);
+        addRow(details.documentTitle, "center", true, 16)
+        currentMargin+=8
+        // body content
+        doc.setFontSize(getSizeMapping(details.fontSize));
+        addElement("First name", details.firstName, 128, 12);
+        addElement("Last name", details.lastName, 128, 12);
+        addElement("Address line 1", details.addressLine1, width - (margin * 2), 12);
+        addElement("Address line 2", details.addressLine1, width - (margin * 2), 12);
 
-            addElements({ title: "City", value: details.city }, { title: "Postal/Zip code", value: details.postalCode });
-            addElements({ title: "Telephone", value: details.telephone }, { title: "Country", value: details.country });
-            console.log(doc.getFontList())
-            doc.save("result.pdf");
-            // reset states
-            isSaving(false);
-            isValid(false);
-       
-        }
-    }, [details, installedFonts, isSaving, saving, valid, width])
+        addElements({ title: "City", value: details.city }, { title: "Postal/Zip code", value: details.postalCode });
+        addElements({ title: "Telephone", value: details.telephone }, { title: "Country", value: details.country });
+        console.log(doc.getFontList())
+        doc.save("result.pdf");
 
+    }
+
+    useEffect(() => {
+        if(saving){
+            setTimeout(()=>logic(), 300)
+            isSaving(false)
+        }
+    
+        return ()=>{
+            isSaving(false)
+        }
+    })
     return (
         <div>
 
