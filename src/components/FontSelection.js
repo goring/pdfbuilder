@@ -37,11 +37,11 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
 
     // border-solid border-b-2 border-customGrey-900 text-white w-full min-w-full p-2 text-xl rounded bg-darkTheme-400
     const selectStyle = "w-20 h-12 rounded bg-darkTheme-400 w-full text-white text-xl border-customGrey-900 border-b-2"
-    const selectTitleStyle = "text-xs font-bold pb-2 text-white-400"
+    const selectTitleStyle = "text-sm font-bold pb-2 text-white-400"
     const selectContainerStyle = "w-full h-24 flex flex-col items-start "
   
     return (
-        <div className="h-5/6 w-full h-full flex justify-center items-center">
+        <div className="h-full w-full flex justify-evenly items-center">
             <div className="w-auto h-5/6 items-center pt-8 flex flex-col justify-around">
 
                 <div className={selectContainerStyle}>

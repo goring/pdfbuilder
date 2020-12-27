@@ -20,7 +20,7 @@ export default function Details() {
     const inputBuilder = (title, props = "p-0") => {
         return (
             <div className={`flex flex-col mt-2 pr-2 `}>
-                <label className="text-xs text-gray-200 font-bold pb-2">{title}</label>
+                <label className="text-sm text-gray-200 font-bold pb-2">{title}</label>
                 <input
                     {...propBuilder(props)}
                 />
