@@ -108,7 +108,9 @@ export default function PDFMaker({ details, saving, isSaving }) {
             // eslint-disable-next-line default-case
             switch(alignment){
                 case "center":
-                    doc.text(value, width/2-doc.getTextWidth(value)+4, currentMargin)
+                    var textWidth = doc.getStringUnitWidth(value) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+                    var textOffset = (doc.internal.pageSize.width - textWidth) / 2;
+                    doc.text(textOffset, currentMargin, value);
                     break
                 case "start":
                     doc.text(value, margin+4, currentMargin)
@@ -150,10 +152,14 @@ export default function PDFMaker({ details, saving, isSaving }) {
             let fontName = getFamilyMapping(details.fontFamily)
             if (details.image)
                 doc.addImage(details.image, width - imageWidth - margin, currentMargin + imageHeight / 2 - 4, imageWidth, imageHeight);
+            
             doc.setFont(fontName, getWeightMapping(details.fontWeight))
+            // doc title
+            doc.setFontSize(getSizeMapping(details.fontSize)+8);
+            addRow(details.documentTitle, "center", true, 16)
+            currentMargin+=8
+            // body content
             doc.setFontSize(getSizeMapping(details.fontSize));
-            addRow(details.documentTitle, "center", true, 16);
-
             addElement("First name", details.firstName, 128, 12);
             addElement("Last name", details.lastName, 128, 12);
             addElement("Address line 1", details.addressLine1, width - (margin * 2), 12);
