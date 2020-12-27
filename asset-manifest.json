@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pdfbuilder/static/css/main.a617f85c.chunk.css",
-    "main.js": "/pdfbuilder/static/js/main.55675525.chunk.js",
-    "main.js.map": "/pdfbuilder/static/js/main.55675525.chunk.js.map",
+    "main.js": "/pdfbuilder/static/js/main.b1741ce9.chunk.js",
+    "main.js.map": "/pdfbuilder/static/js/main.b1741ce9.chunk.js.map",
     "runtime-main.js": "/pdfbuilder/static/js/runtime-main.65e563f7.js",
     "runtime-main.js.map": "/pdfbuilder/static/js/runtime-main.65e563f7.js.map",
     "static/js/2.e538ac2b.chunk.js": "/pdfbuilder/static/js/2.e538ac2b.chunk.js",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.65e563f7.js",
     "static/js/3.aa400ccf.chunk.js",
     "static/css/main.a617f85c.chunk.css",
-    "static/js/main.55675525.chunk.js"
+    "static/js/main.b1741ce9.chunk.js"
   ]
 }
