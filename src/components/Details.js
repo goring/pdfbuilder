@@ -29,7 +29,7 @@ export default function Details() {
     }
 
     return (
-            <div className="flex flex-col justify-between h-full py-8 w-full">
+            <div className="flex flex-col justify-between h-full w-full">
                 <div>
                     {inputBuilder('Document Title' , {placeholder:"Document Title", id:"documentTitle"})}
                 </div>
