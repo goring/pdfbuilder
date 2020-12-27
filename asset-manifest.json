@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pdfbuilder/static/css/main.a617f85c.chunk.css",
-    "main.js": "/pdfbuilder/static/js/main.a6380b36.chunk.js",
-    "main.js.map": "/pdfbuilder/static/js/main.a6380b36.chunk.js.map",
+    "main.css": "/pdfbuilder/static/css/main.b2a14f26.chunk.css",
+    "main.js": "/pdfbuilder/static/js/main.3ebca077.chunk.js",
+    "main.js.map": "/pdfbuilder/static/js/main.3ebca077.chunk.js.map",
     "runtime-main.js": "/pdfbuilder/static/js/runtime-main.65e563f7.js",
     "runtime-main.js.map": "/pdfbuilder/static/js/runtime-main.65e563f7.js.map",
     "static/js/2.e538ac2b.chunk.js": "/pdfbuilder/static/js/2.e538ac2b.chunk.js",
@@ -16,7 +16,7 @@
     "static/js/6.c79ea016.chunk.js": "/pdfbuilder/static/js/6.c79ea016.chunk.js",
     "static/js/6.c79ea016.chunk.js.map": "/pdfbuilder/static/js/6.c79ea016.chunk.js.map",
     "index.html": "/pdfbuilder/index.html",
-    "static/css/main.a617f85c.chunk.css.map": "/pdfbuilder/static/css/main.a617f85c.chunk.css.map",
+    "static/css/main.b2a14f26.chunk.css.map": "/pdfbuilder/static/css/main.b2a14f26.chunk.css.map",
     "static/js/2.e538ac2b.chunk.js.LICENSE.txt": "/pdfbuilder/static/js/2.e538ac2b.chunk.js.LICENSE.txt",
     "static/js/3.aa400ccf.chunk.js.LICENSE.txt": "/pdfbuilder/static/js/3.aa400ccf.chunk.js.LICENSE.txt",
     "static/js/4.43dd8a9e.chunk.js.LICENSE.txt": "/pdfbuilder/static/js/4.43dd8a9e.chunk.js.LICENSE.txt",
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.65e563f7.js",
     "static/js/3.aa400ccf.chunk.js",
-    "static/css/main.a617f85c.chunk.css",
-    "static/js/main.a6380b36.chunk.js"
+    "static/css/main.b2a14f26.chunk.css",
+    "static/js/main.3ebca077.chunk.js"
   ]
 }
