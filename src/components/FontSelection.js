@@ -22,18 +22,15 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
 
     
       const fontFamilyOnChangeHandler = (e) => {
-          console.log(e.target.value)
           setFontFamily(toFontFamilyClass(e.target.value))
         }
         
         const fontWeightOnChangeHandler = (e) => {
             const key = Object.keys(availableWeights)[Number(e.target.value)]
-            console.log(key, availableWeights[key])
             setFontWeight(availableWeights[key])
         }
         
         const fontSizeOnChangeHandler = (e) => {
-            console.log(e.target.value)
             const key = Object.keys(availableSizes)[Number(e.target.value)]
             setFontSize(availableSizes[key])
         }

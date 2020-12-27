@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { jsPDF } from "jspdf";
-import FontSelection from './FontSelection';
 
 import PlayfairDisplay from '../assets/PlayfairDisplay-normal';
 import Poppins from '../assets/Poppins-normal';
