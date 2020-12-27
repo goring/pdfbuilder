@@ -159,7 +159,7 @@ export default function PDFMaker({ details, saving, isSaving, demount}) {
         addElement("First name", details.firstName, 128, 12);
         addElement("Last name", details.lastName, 128, 12);
         addElement("Address line 1", details.addressLine1, width - (margin * 2), 12);
-        addElement("Address line 2", details.addressLine1, width - (margin * 2), 12);
+        addElement("Address line 2", details.addressLine2, width - (margin * 2), 12);
 
         addElements({ title: "City", value: details.city }, { title: "Postal/Zip code", value: details.postalCode });
         addElements({ title: "Telephone", value: details.telephone }, { title: "Country", value: details.country });
