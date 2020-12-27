@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { jsPDF } from "jspdf";
 
+import placeholder from "../assets/placeholder.png"
+
 import PlayfairDisplay from '../assets/PlayfairDisplay-normal';
 import Poppins from '../assets/Poppins-normal';
 import RobotoMono from '../assets/RobotoMono-normal';
@@ -151,8 +153,9 @@ export default function PDFMaker({ details, saving, isSaving }) {
         if (valid) {
             let fontName = getFamilyMapping(details.fontFamily)
             if (details.image)
-                doc.addImage(details.image, width - imageWidth - margin, currentMargin + imageHeight / 2 - 4, imageWidth, imageHeight);
-            
+                doc.addImage(details.image, width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight);
+            else 
+                doc.addImage(placeholder,width - imageWidth - margin, currentMargin + imageHeight / 2 + 4, imageWidth, imageHeight)
             doc.setFont(fontName, getWeightMapping(details.fontWeight))
             // doc title
             doc.setFontSize(getSizeMapping(details.fontSize)+8);
