@@ -41,9 +41,7 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
     const selectContainerStyle = "w-full h-24 flex flex-col items-start "
   
     return (
-        <div className="h-full w-full flex justify-evenly items-center">
-            <div className="w-auto h-5/6 items-center pt-8 flex flex-col justify-around">
-
+            <div className="w-auto h-4/12 items-center pt-8 flex flex-col justify-start">
                 <div className={selectContainerStyle}>
                     <label className={selectTitleStyle}>Family</label>
                     <select className={selectStyle} onChange={(e) => fontFamilyOnChangeHandler(e) }>
@@ -75,6 +73,5 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
                 </div>
 
             </div>
-        </div>
     )
 }
