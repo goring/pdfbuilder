@@ -3,10 +3,10 @@ import Placeholder from '../assets/placeholder.png'
 export default function PreviewWindow({ details }) {
 
 
-    const inputBuilder = (title, value, padding = 0) => {
+    const inputBuilder = (title, value, padding = 4) => {
         return (
             <div className={`flex flex-col w-full ${padding}`}>
-                <label className={`${details.fontFamily} ${details.fontWeight} ${details.fontSize} font-sans text-xs text-black pb-2`}>{title}</label>
+                <label className={`${details.fontFamily} ${details.fontWeight} ${details.fontSize} font-sans text-xs text-black pt-4 pb-2`}>{title}</label>
                 <p className={`${details.fontFamily} ${details.fontWeight} ${details.fontSize} text-sm border-t border-b border-l border-r border-black pl-3 p-1 ${value ? "pb-2" : "pb-8"}`}>{value}</p>
             </div>
         )
@@ -22,12 +22,12 @@ export default function PreviewWindow({ details }) {
                         <div className="flex justify-around mb-8">
                             <h1 className={`text-3xl ${details.fontFamily}`}>{details.documentTitle === "" ? "Document Title" : details.documentTitle}</h1>
                         </div>
-                        <div className="flex flex-row justify-around w-full">
+                        <div className="flex flex-row justify-around items-end w-full">
                             <div className="flex flex-col justify-evenly m-auto w-full">
                                 {inputBuilder('First Name', details.firstName, "pr-4")}
                                 {inputBuilder('Last Name', details.lastName, "pr-4")}
                             </div>
-                            <img className="h-32 w-32 mt-4" src={details.image ? details.image : Placeholder}></img>
+                            <img className="h-32 w-32 " alt="person" src={details.image ? details.image : Placeholder}></img>
                         </div>
                         <div className="flex flex-row justify-between">
                             {inputBuilder('Address Line 1', details.addressLine1)}

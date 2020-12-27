@@ -56,7 +56,7 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
 
                 <div className={selectContainerStyle}>
                     <label className={selectTitleStyle}>Weight</label>
-                    <select defaultValue={3} className={selectStyle} onChange={(e) => fontWeightOnChangeHandler(e) }>
+                    <select defaultValue={0} className={selectStyle} onChange={(e) => fontWeightOnChangeHandler(e) }>
                         {Object.keys(availableWeights).map((val,idx) => 
                         (
                             <option value={idx} key={idx}>{val}</option>
@@ -66,7 +66,7 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
 
                 <div className={selectContainerStyle}>
                     <label className={selectTitleStyle}>Size</label>
-                    <select defaultValue={2} className={selectStyle} onChange={(e) => fontSizeOnChangeHandler(e) }>
+                    <select defaultValue={0} className={selectStyle} onChange={(e) => fontSizeOnChangeHandler(e) }>
                         {Object.keys(availableSizes).map((val,idx) => 
                         (
                             <option value={idx} key={idx}>{val}</option>
