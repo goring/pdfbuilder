@@ -6,12 +6,12 @@ import ImageDropper from './ImageDropper';
 import FontSelection from './FontSelection';
 
 
-function Panel({preview, saveToPDF}) {
+function Panel({ preview, saveToPDF }) {
     const stages = 2
     const [currentStage, setCurrentStage] = useState(0)
     const [dispatching, isDispatching] = useState(false)
     const [details, setDetails] = useState({
-        documentTitle:"",
+        documentTitle: "Title",
         firstName: "",
         lastName: "",
         addressLine1: "",
@@ -20,30 +20,29 @@ function Panel({preview, saveToPDF}) {
         postalCode: "",
         country: "",
         telephone: "",
-        fontFamily:{sans:"font-sans"},
-        fontSize:{normal:"text-base"},
-        fontWeight:{normal:"font-normal"},
-        image:""
+        fontFamily: 'font-poppins',
+        fontSize: 'text-base',
+        fontWeight: 'text-base',
+        image: ""
     });
-    
 
-    
 
-    const stageMap = { 
-        0: () => (<Details />), 
-        1: () => (<ImageDropper 
-                            setImage={(image)=>setDetails(prevState=>({...prevState, image}))}/>), 
-        2: () => (<FontSelection 
-                            setFontFamily={(fontFamily)=>setDetails(prevState=>({...prevState, fontFamily}))}
-                            setFontWeight={(fontWeight)=> setDetails(prevState=>({...prevState, fontWeight}))} 
-                            setFontSize={(fontSize)=> setDetails(prevState=>({...prevState, fontSize}))} 
-                            />) }
 
-    const stageHandler = () => {
 
+    const stageMap = {
+        0: () => (<Details />),
+        1: () => (<ImageDropper
+            setImage={(image) => setDetails(prevState => ({ ...prevState, image }))} />),
+        2: () => (<FontSelection
+            setFontFamily={(fontFamily) => setDetails(prevState => ({ ...prevState, fontFamily }))}
+            setFontWeight={(fontWeight) => setDetails(prevState => ({ ...prevState, fontWeight }))}
+            setFontSize={(fontSize) => setDetails(prevState => ({ ...prevState, fontSize }))}
+        />)
     }
 
-    useEffect(()=> {
+
+
+    useEffect(() => {
         preview(details)
     })
 
@@ -53,12 +52,9 @@ function Panel({preview, saveToPDF}) {
 
     const saveHandler = (e) => {
         saveToPDF(true)
-        console.log("final state")
     }
 
-    const handleSubmit = () => {
-        return details
-    }
+  
 
     const onChangeHandler = (e) => {
         setDetails((prevState) => ({
@@ -73,14 +69,14 @@ function Panel({preview, saveToPDF}) {
                 onSubmit={(e) => onSubmitHandler(e)}
                 onChange={(e) => onChangeHandler(e)}>
                 <Stage currentStage={currentStage} />
-                <div className="sm:overflow-scroll sm:h-screen sm:pt-auto">
+                <div className="overflow-y-auto sm:h-screen sm:pt-auto">
                     {stageMap[currentStage]()}
                 </div>
                 <div>
-                <Buttons
-                    save={(e) => saveHandler(e)}
-                    switchStage={(x) => { console.log(currentStage); x ? setCurrentStage(currentStage + 1 % stages) : setCurrentStage((currentStage - 1 >= 0) ? (currentStage - 1) : currentStage) }}
-                    final={currentStage === stages ? true : false} />
+                    <Buttons
+                        save={(e) => saveHandler(e)}
+                        switchStage={(x) => { console.log(currentStage); x ? setCurrentStage(currentStage + 1 % stages) : setCurrentStage((currentStage - 1 >= 0) ? (currentStage - 1) : currentStage) }}
+                        final={currentStage === stages ? true : false} />
                 </div>
             </form>
         </div>

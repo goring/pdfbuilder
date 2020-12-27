@@ -7,18 +7,30 @@ function App() {
     const [details, setDetails] = useState()
     const [saving, isSaving] = useState(false)
     
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(()=>{
+        if(saving){
+            setMounted(true)
+        }
+    }, [saving])
 
     return (
         <div className="h-screen w-screen bg-darkTheme">
-            <div className="flex flex-row justify-center w-screen h-screen">
-                <div className="flex flex-row justify-center w-3/4 h-screen">
+
+            
+            <div className="flex flex-row justify-around w-screen h-screen">
+                <div className="flex flex-row justify-between w-3/4 h-screen">
                     <PreviewWindow details={details}/>
 
-                    <div className="flex flex-col justify-between md:py-16 sm:py-0 h-screen content-center items-center w-5/12 ">
+                    <div className="flex flex-col md:py-16 sm:py-0 h-screen content-center items-center w-5/12 ">
 
                         <Panel saveToPDF = {(save) => isSaving(save) } preview={(details) => setDetails(details)} />
-
-                        <PDFMaker saving={saving} details={details} isSaving={(save) => isSaving(save)}/>
+                        
+                        {mounted ? 
+                        <PDFMaker saving={saving} details={details} demount = {(val)=>setMounted(val)} isSaving={(save) => isSaving(save)}/>
+                        : ""}
+                        
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -18,7 +19,7 @@ module.exports = {
       warmGray: colors.warmGray,
       cyan: colors.cyan,
       white: { 300: "#fafafa", 400: "#f2f2f2", DEFAULT: colors.white },
-      darkTheme: { 400: "#2B2A2E", 500: "#141318", DEFAULT: "#0c0b10", 600: "#100F14", 700: "#141318", 800: "#141318" },
+      darkTheme: { 300:"#1C1B1F", 400: "#2B2A2E", 500: "#141318", DEFAULT: "#0c0b10", 600: "#100F14", 700: "#141318", 800: "#141318" },
       customGrey: {
         950: '#26252C',
         900: '#1A1C1F',
@@ -37,8 +38,13 @@ module.exports = {
       customBlue: '#1661CA',
       customCyan: '#148BB3',
     },
-
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins:['Poppins', ...defaultTheme.fontFamily.sans],
+        playfairDisplay:['Playfair Display', ...defaultTheme.fontFamily.sans],
+        robotoMono:['Roboto Mono', ...defaultTheme.fontFamily.mono],
+      },
+    },
   },
   variants: {
     extend: {},

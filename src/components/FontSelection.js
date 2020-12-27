@@ -3,11 +3,7 @@ import React, {useState} from 'react'
 export default function FontSelection({setFontFamily, setFontWeight, setFontSize}) {
     const [fontStyle, setFontStyle] = useState()
 
-    const availableFonts={
-        sans:"font-sans",
-        serif:"font-serif",
-        mono:"font-mono"
-    }
+    const availableFonts=['Poppins', 'PlayfairDisplay', 'RobotoMono']
 
     const availableWeights = {
         normal:"font-normal",
@@ -15,50 +11,54 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
     }
 
     const availableSizes = {
-       tiny:"text-xs",
-       small:"text-sm",
        normal:"text-base",
        large:"text-lg",
        huge:"text-xl"
     }
 
-    
-    const selectStyle = "w-3/6 h-8 rounded bg-darkTheme-400 text-white"
-    const fontFamilyOnChangeHandler = (e) => {
-        const key = Object.keys(availableFonts)[Number(e.target.value)]
-        setFontFamily({[key]:availableFonts[key]})
-    }
-    
-    const fontWeightOnChangeHandler = (e) => {
-        const key = Object.keys(availableWeights)[Number(e.target.value)]
-        console.log(key, availableWeights[key])
-        setFontWeight({[key]:availableWeights[key]})
-    }
+    const toFontFamilyClass = (string) => {
+        return "font-"+string.charAt(0).toLowerCase() + string.slice(1);
+      }
 
-    const fontSizeOnChangeHandler = (e) => {
-        console.log(e.target.value)
-        const key = Object.keys(availableSizes)[Number(e.target.value)]
-        setFontSize({[key]:availableSizes[key]})
-    }
-    const selectTitleStyle = "font-lg text-white-400"
-    const selectContainerStyle = "w-3/4 h-24 flex flex-row justify-between items-center"
+    
+      const fontFamilyOnChangeHandler = (e) => {
+          console.log(e.target.value)
+          setFontFamily(toFontFamilyClass(e.target.value))
+        }
+        
+        const fontWeightOnChangeHandler = (e) => {
+            const key = Object.keys(availableWeights)[Number(e.target.value)]
+            console.log(key, availableWeights[key])
+            setFontWeight(availableWeights[key])
+        }
+        
+        const fontSizeOnChangeHandler = (e) => {
+            console.log(e.target.value)
+            const key = Object.keys(availableSizes)[Number(e.target.value)]
+            setFontSize(availableSizes[key])
+        }
 
+    // border-solid border-b-2 border-customGrey-900 text-white w-full min-w-full p-2 text-xl rounded bg-darkTheme-400
+    const selectStyle = "w-20 h-12 rounded bg-darkTheme-400 w-full text-white text-xl border-customGrey-900 border-b-2"
+    const selectTitleStyle = "text-xs font-bold pb-2 text-white-400"
+    const selectContainerStyle = "w-full h-24 flex flex-col items-start "
+  
     return (
-        <div className="h-5/6 w-full h-full">
-            <div className="w-full h-5/6 items-center pt-8 flex flex-col justify-around">
+        <div className="h-5/6 w-full h-full flex justify-center items-center">
+            <div className="w-auto h-5/6 items-center pt-8 flex flex-col justify-around">
 
                 <div className={selectContainerStyle}>
-                    <h1 className={selectTitleStyle}>Family</h1>
+                    <label className={selectTitleStyle}>Family</label>
                     <select className={selectStyle} onChange={(e) => fontFamilyOnChangeHandler(e) }>
-                        {Object.keys(availableFonts).map((val,idx) => 
+                        {availableFonts.map((val,idx) => 
                         (
-                            <option value={idx} key={idx}>{val}</option>
+                            <option className="p-20" value={val} key={idx}>{val}</option>
                         ))}
                     </select>
                 </div>
 
                 <div className={selectContainerStyle}>
-                    <h1 className={selectTitleStyle}>Weight</h1>
+                    <label className={selectTitleStyle}>Weight</label>
                     <select defaultValue={3} className={selectStyle} onChange={(e) => fontWeightOnChangeHandler(e) }>
                         {Object.keys(availableWeights).map((val,idx) => 
                         (
@@ -68,7 +68,7 @@ export default function FontSelection({setFontFamily, setFontWeight, setFontSize
                 </div>
 
                 <div className={selectContainerStyle}>
-                    <h1 className={selectTitleStyle}>Size</h1>
+                    <label className={selectTitleStyle}>Size</label>
                     <select defaultValue={2} className={selectStyle} onChange={(e) => fontSizeOnChangeHandler(e) }>
                         {Object.keys(availableSizes).map((val,idx) => 
                         (

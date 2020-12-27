@@ -1,5 +1,6 @@
 {
   "name": "pdfbuilder",
+  "homepage": "http://goring.github.io/pdfbuilder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,21 +10,23 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/react": "^17.0.0",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "9",
     "jspdf": "^2.2.0",
-    "postcss": "^7.0.35",
+    "postcss": "7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.2.4",
     "react-scripts": "4.0.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
